@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Archivos de origen">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Archivos de encabezado">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Archivos de recursos">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Classes">
+      <UniqueIdentifier>{0242f127-11a0-4aad-904b-694691cde353}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Nodes">
+      <UniqueIdentifier>{f3a3ebb5-9440-4931-974e-9f5b039fbc23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Lists">
+      <UniqueIdentifier>{5236baff-10bb-4696-a954-5224c30c47e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Classes">
+      <UniqueIdentifier>{fdaabac0-2c02-4252-8368-3a810bf613e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Nodes">
+      <UniqueIdentifier>{f5fa8a39-ab1a-4d2d-9537-208cdabddc9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Lists">
+      <UniqueIdentifier>{9b4eb141-6ccc-429b-ad14-93f31ea60133}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="QUIZ1_Datos2024.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Employee.cpp">
+      <Filter>Archivos de origen\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Floor.cpp">
+      <Filter>Archivos de origen\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="FloorNode.cpp">
+      <Filter>Archivos de origen\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="EmployeeNode.cpp">
+      <Filter>Archivos de origen\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="SalesNode.cpp">
+      <Filter>Archivos de origen\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="FloorList.cpp">
+      <Filter>Archivos de origen\Lists</Filter>
+    </ClCompile>
+    <ClCompile Include="SalesList.cpp">
+      <Filter>Archivos de origen\Lists</Filter>
+    </ClCompile>
+    <ClCompile Include="EmployeeList.cpp">
+      <Filter>Archivos de origen\Lists</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Floor.h">
+      <Filter>Archivos de encabezado\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Employee.h">
+      <Filter>Archivos de encabezado\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="EmployeeNode.h">
+      <Filter>Archivos de encabezado\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="FloorNode.h">
+      <Filter>Archivos de encabezado\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="SalesNode.h">
+      <Filter>Archivos de encabezado\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="EmployeeList.h">
+      <Filter>Archivos de encabezado\Lists</Filter>
+    </ClInclude>
+    <ClInclude Include="FloorList.h">
+      <Filter>Archivos de encabezado\Lists</Filter>
+    </ClInclude>
+    <ClInclude Include="SalesList.h">
+      <Filter>Archivos de encabezado\Lists</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
