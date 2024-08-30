@@ -21,6 +21,7 @@ public: //public method
 	void setName(std::string pName);
 	void setSummatory(int quantity);
 	void setSaleHead(SalesNode* head);
+	void increaseSummatory(int pSale);
 
 
 

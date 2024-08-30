@@ -128,23 +128,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Employee.cpp" />
-    <ClCompile Include="EmployeeList.cpp" />
     <ClCompile Include="EmployeeNode.cpp" />
     <ClCompile Include="Floor.cpp" />
     <ClCompile Include="FloorList.cpp" />
     <ClCompile Include="FloorNode.cpp" />
     <ClCompile Include="QUIZ1_Datos2024.cpp" />
-    <ClCompile Include="SalesList.cpp" />
     <ClCompile Include="SalesNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Employee.h" />
-    <ClInclude Include="EmployeeList.h" />
     <ClInclude Include="EmployeeNode.h" />
     <ClInclude Include="Floor.h" />
     <ClInclude Include="FloorList.h" />
     <ClInclude Include="FloorNode.h" />
-    <ClInclude Include="SalesList.h" />
     <ClInclude Include="SalesNode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

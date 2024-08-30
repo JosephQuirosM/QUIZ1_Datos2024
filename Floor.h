@@ -20,6 +20,7 @@ public: //public Methods
 	void setEmployeeHead(EmployeeNode* head);
 	void setName(int pName);
 	void setSales(int pSales);
+	void increaseSales(int pSales);
 
 private: //private methods
 

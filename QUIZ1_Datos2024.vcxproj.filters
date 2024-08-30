@@ -54,12 +54,6 @@
     <ClCompile Include="FloorList.cpp">
       <Filter>Archivos de origen\Lists</Filter>
     </ClCompile>
-    <ClCompile Include="SalesList.cpp">
-      <Filter>Archivos de origen\Lists</Filter>
-    </ClCompile>
-    <ClCompile Include="EmployeeList.cpp">
-      <Filter>Archivos de origen\Lists</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Floor.h">
@@ -77,13 +71,7 @@
     <ClInclude Include="SalesNode.h">
       <Filter>Archivos de encabezado\Nodes</Filter>
     </ClInclude>
-    <ClInclude Include="EmployeeList.h">
-      <Filter>Archivos de encabezado\Lists</Filter>
-    </ClInclude>
     <ClInclude Include="FloorList.h">
-      <Filter>Archivos de encabezado\Lists</Filter>
-    </ClInclude>
-    <ClInclude Include="SalesList.h">
       <Filter>Archivos de encabezado\Lists</Filter>
     </ClInclude>
   </ItemGroup>

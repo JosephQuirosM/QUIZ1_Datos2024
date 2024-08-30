@@ -44,3 +44,8 @@ void Floor::setSales(int pSales)
 {
 	sales = pSales;
 }
+
+void Floor::increaseSales(int pSales)
+{
+	sales += pSales;
+}

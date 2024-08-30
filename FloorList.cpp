@@ -1,4 +1,5 @@
 #include "FloorList.h"
+using namespace std;
 
 FloorList::FloorList()
 {
@@ -18,12 +19,12 @@ void FloorList::insertFloor(Floor* newFloor)
 	FloorNode* aux = ini;
 	FloorNode* prev = nullptr;
 
-	while (aux->getFloor()->getName() < newFloor->getName() && aux->getNextFloor() != nullptr) {
+	while (aux->getFloor()->getName() > newFloor->getName() && aux->getNextFloor() != nullptr) {
 		prev = aux;
 		aux = aux->getNextFloor();
 	}
 
-	if (aux == ini) {
+	if (aux == ini && aux->getFloor()->getName() < newFloor->getName()) {
 		newNode->setNextFloor(aux);
 		aux->setPrevFloor(newNode);
 		ini = newNode;
@@ -43,23 +44,74 @@ void FloorList::insertFloor(Floor* newFloor)
 	return;
 }
 
-int FloorList::printList()
+void FloorList::printFloors(bool showSales)
 {
-	int i = 0;
 	FloorNode* aux = ini;
 	if (aux == nullptr) {
-		return -1;
+		cout << "El edificio esta vacio\n";
+		return;
+	}
+
+	if (showSales)
+	{
+		while (aux != nullptr) {
+			cout << aux->getFloor()->getName() << "\n";
+			cout << "ventas: " << aux->getFloor()->getSales() << "\n\n";
+
+			aux = aux->getNextFloor();
+		}
+		return;
 	}
 
 	while (aux != nullptr) {
-		i++;
-		std::cout << aux->getFloor()->getName() << "\n";
+		cout <<"piso " << aux->getFloor()->getName() << "\n";
+		aux = aux->getNextFloor();
+	}
+	return;
+}
+
+void FloorList::printEmployees(int floor, bool showSales)
+{
+	FloorNode* aux = ini;
+	if (aux == nullptr) {
+		cout << "El edificio esta vacio\n";
+		return;
+	}
+
+	while (aux->getFloor()->getName() != floor && aux->getNextFloor() != nullptr) {
 		aux = aux->getNextFloor();
 	}
 
+	if (aux->getFloor()->getName() != floor)
+	{
+		cout << "El piso no existe\n";
+		return;
+	}
 
-	std::cout << "tamano " << i;
-	return i;
+	if (showSales)
+	{
+		cout << "\n\npiso " << floor << "\n";
+		EmployeeNode* head = aux->getFloor()->getEmployeeHead();
+		while (head != nullptr)
+		{
+			cout << head->getEmployee()->getName() << "\n";
+			cout << head->getEmployee()->getSummatory()<<"\n\n";
+			head = head->getNextEmployee();
+		}
+		cout << "\n\n";
+		return;
+	}
+
+	cout << "\n\npiso " << floor << "\n";
+	EmployeeNode* head = aux->getFloor()->getEmployeeHead();
+	while (head != nullptr)
+	{
+		cout << head->getEmployee()->getName() << "\n";
+		head = head->getNextEmployee();
+	}
+	cout << "\n\n";
+	return;
+	
 }
 
 void FloorList::insertEmployee(int floor, Employee* employee)
@@ -84,7 +136,7 @@ void FloorList::insertSale(int floor, std::string employee, int sale)
 {
 	FloorNode* aux = ini;
 
-	while (aux->getFloor()->getName() != floor && aux->getNextFloor() != nullptr) {
+	while (aux->getFloor()->getName() != floor && aux->getNextFloor()->getNextFloor() != nullptr) {
 		aux = aux->getNextFloor();
 	}
 
@@ -93,12 +145,62 @@ void FloorList::insertSale(int floor, std::string employee, int sale)
 
 		if (ownerSale != nullptr) {
 			insertSale(ownerSale, sale);
+			aux->getFloor()->increaseSales(sale);
+			ownerSale->increaseSummatory(sale);
+			return;
 		}
-
+		cout << "El empleado " << employee << " no existe\n";
 		return;
 	}
 
 	std::cout << "piso no existe \n";
+	return;
+}
+
+void FloorList::deleteFloor(int floor)
+{
+	FloorNode* aux = ini;
+	FloorNode* prev = nullptr;
+
+	if (aux == nullptr)
+	{
+		cout << "el edificio esta vacio\n";
+		return;
+	}
+
+	while (aux->getFloor()->getName() != floor && aux->getNextFloor() != nullptr)
+	{
+		prev = aux;
+		aux = aux->getNextFloor();
+	}
+
+	if (aux->getFloor()->getName() == floor)
+	{
+		if (aux->getNextFloor() == nullptr)
+		{
+			prev->setNextFloor(nullptr);
+			return;
+		}
+
+		if (prev == nullptr)
+		{
+			deleteFloor(aux->getFloor(), aux->getNextFloor()->getFloor());
+			recountSummatory(aux->getNextFloor()->getFloor());
+			aux->getNextFloor()->setPrevFloor(nullptr);
+			ini = aux->getNextFloor();
+			aux->getFloor()->setEmployeeHead(nullptr);
+			return;
+		}
+
+		deleteFloor(aux->getFloor(), aux->getNextFloor()->getFloor());
+		recountSummatory(aux->getNextFloor()->getFloor());
+		prev->setNextFloor(aux->getNextFloor());
+		aux->getNextFloor()->setPrevFloor(prev);
+		aux->getFloor()->setEmployeeHead(nullptr);
+		return;
+	}
+
+	cout << "este edificio no existe\n";
 	return;
 }
 
@@ -117,7 +219,7 @@ void FloorList::insertEmployee(Floor* floor, Employee* employee)
 		aux = aux->getNextEmployee();
 	}
 
-	if (aux == floor->getEmployeeHead()) {
+	if (aux == floor->getEmployeeHead() && aux->getEmployee()->getName() > employee->getName()) {
 		newNode->setNextEmployee(aux);
 		floor->setEmployeeHead(newNode);
 		return;
@@ -136,11 +238,11 @@ Employee* FloorList::searchEmployee(Floor* floor, std::string name)
 {
 	EmployeeNode* aux = floor->getEmployeeHead();
 
-	while (aux->getEmployee()->getName() != name && aux != nullptr) {
+	while (aux->getEmployee()->getName() != name && aux->getNextEmployee() != nullptr) {
 		aux = aux->getNextEmployee();
 	}
 
-	if (aux != nullptr) {
+	if (aux->getEmployee()->getName() == name) {
 		return aux->getEmployee();
 	}
 
@@ -177,4 +279,28 @@ void FloorList::insertSale(Employee* employee, int sale)
 
 	aux->setNextSale(newNode);
 	return;
+}
+
+void FloorList::deleteFloor(Floor* actual, Floor* next)
+{
+	EmployeeNode* head = actual->getEmployeeHead();
+
+	while (head != nullptr)
+	{
+		insertEmployee(next, head->getEmployee());
+		head->setEmployee(nullptr);
+		head = head->getNextEmployee();
+	}
+}
+
+void FloorList::recountSummatory(Floor* floor)
+{
+	EmployeeNode* aux = floor->getEmployeeHead();
+	floor->setSales(0);
+
+	while (aux != nullptr)
+	{
+		floor->increaseSales(aux->getEmployee()->getSummatory());
+		aux = aux->getNextEmployee();
+	}
 }

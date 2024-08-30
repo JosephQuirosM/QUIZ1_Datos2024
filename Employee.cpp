@@ -43,3 +43,8 @@ void Employee::setSaleHead(SalesNode* head)
 	saleHead = head;
 }
 
+void Employee::increaseSummatory(int pSale)
+{
+	summatory += pSale;
+}
+
